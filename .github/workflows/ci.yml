@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory:backend
+        working-directory: backend
     steps:
       - name : Checkout code
         uses: actions/checkout@v4
@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory:frontend
+        working-directory: frontend
     steps:
       - name: Checkout node
         uses: actions/checkout@v4
@@ -71,4 +71,4 @@ jobs:
       - name: Build
         run : npm run build
         env:
-        VITE_API_URL: http://localhost:8000/api
+          VITE_API_URL: http://localhost:8000/api
