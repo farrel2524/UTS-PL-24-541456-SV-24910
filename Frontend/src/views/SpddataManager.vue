@@ -50,7 +50,7 @@ async function save() {
     }
 }
 
-function edit(item: Spddata) {
+function edit(item: spddata) {
     editingId.value = item.id;
     form.Username = item.Username;
     form.Time = item.Time;
