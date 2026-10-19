@@ -1,0 +1,12 @@
+$kind: http-request
+description: ""
+url: "{{web_url}}/spddatas/3"
+method: PUT
+body:
+  type: json
+  content: '{"Time":"10000h 22m 51s"}'
+auth:
+  type: bearer
+  credentials:
+    token: "{{token}}"
+order: 5000

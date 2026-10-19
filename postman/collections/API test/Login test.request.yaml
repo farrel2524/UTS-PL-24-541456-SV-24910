@@ -1,0 +1,17 @@
+$kind: http-request
+description: ""
+url: "{{web_url}}/login"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: '{"email":"test@example.com","password":"password"}'
+scripts:
+  - type: afterResponse
+    code: "const res = pm.response.json();\r
+
+      pm.collectionVariables.set(\"token\", res.token);"
+    language: text/javascript
+order: 253

@@ -1,0 +1,12 @@
+$kind: http-request
+description: ""
+url: "{{web_url}}/spddatas"
+method: POST
+body:
+  type: json
+  content: '{"Username":"Key42b","Time":"1h 22m 51s", "Difficulty":"Easy"}'
+auth:
+  type: bearer
+  credentials:
+    token: "{{token}}"
+order: 2000

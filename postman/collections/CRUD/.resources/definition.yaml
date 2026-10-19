@@ -1,0 +1,11 @@
+$kind: collection
+variables:
+  web_url: ""
+  tokenc: ""
+  token: ""
+scripts:
+  - type: http:afterResponse
+    code: "const res = pm.response.json();\r
+
+      pm.collectionVariables.set(\"tokenc\", res.token);"
+    language: text/javascript

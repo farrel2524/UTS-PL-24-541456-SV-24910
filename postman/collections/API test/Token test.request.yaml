@@ -1,0 +1,9 @@
+$kind: http-request
+description: ""
+url: http://localhost:8000/api/me
+method: GET
+auth:
+  type: bearer
+  credentials:
+    token: "{{token}}"
+order: 1000
