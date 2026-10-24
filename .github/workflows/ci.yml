@@ -101,14 +101,14 @@ jobs:
       - name: Build dan push backend image
         uses: docker/build-push-action@v6
         with:
-          context: ./<your-backend-folder>
+          context: ./Backend
           push: true
           tags: ${{ env.IMAGE_PREFIX }}-backend:${{ github.sha }}
 
       - name: Build dan push fonrtend
         uses: docker/build-push-action@v6
         with:
-          context: ./<your-frontend-folder>
+          context: ./Frontend
           push: true
           tags: ${{ env.IMAGE_PREFIX }}-frontend${{ github.sha }}
           build-args: |
