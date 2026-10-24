@@ -120,4 +120,4 @@ jobs:
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       run: |
         echo "Pull ${IMAGE_PREFIX}-backend:${GITHUB_SHA},"
-        echo "start APP_KEY dan DB_PASSWORD."
+        echo "start APP_KEY dan DB_PASSWORD.."
