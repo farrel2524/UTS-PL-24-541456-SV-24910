@@ -20,6 +20,10 @@ RUN composer dump-autoload --optimize \
 
 USER www-data
 
+# Send Laravel logs to the container's stdout (read them with `docker logs`),
+# never to a file inside the container. docker-compose.yml sets the same value.
+ENV LOG_CHANNEL=stdout
+
 EXPOSE 8000
 
 #Devserver stuff idk??
