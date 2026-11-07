@@ -59,6 +59,10 @@ return [
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+                // Give up after a few seconds when the database is unreachable instead of
+                // waiting for the driver's much longer default, so /health can answer 503
+                // within the Docker healthcheck timeout.
+                PDO::ATTR_TIMEOUT => (int) env('DB_CONNECT_TIMEOUT', 3),
             ]) : [],
         ],
 
