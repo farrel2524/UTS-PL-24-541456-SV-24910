@@ -2,14 +2,6 @@
 
 namespace App\Support;
 
-/**
- * Minimal Prometheus counter for incoming HTTP requests (http_requests_total).
- *
- * Hand-rolled so that exposing one metric does not need a new Composer package.
- * Counts live in a single JSON file; flock() stops concurrent requests from
- * overwriting each other. Counters reset when the container is recreated, which
- * is normal for Prometheus (rate() handles counter resets).
- */
 class HttpMetrics
 {
     private const METRIC = 'http_requests_total';
@@ -48,9 +40,7 @@ class HttpMetrics
         }
     }
 
-    /**
-     * Renders every counter in the Prometheus text exposition format.
-     */
+
     public static function render(): string
     {
         $counts = [];
