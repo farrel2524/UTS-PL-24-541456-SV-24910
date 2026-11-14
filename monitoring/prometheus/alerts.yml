@@ -1,0 +1,12 @@
+groups:
+  - name: service-availability
+    rules:
+      - alert: ServiceDown
+        expr: up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Service {{ $labels.job }} is DOWN"
+          description: "Prometheus has not been able to scrape {{ $labels.job }} ({{ $labels.instance }}) for more than 1 minute."
+          first_action: "On the Docker host run `docker compose ps -a` and check whether the {{ $labels.job }} container shows Exited, then run `docker compose logs --tail=50 {{ $labels.job }}` to read why it stopped."

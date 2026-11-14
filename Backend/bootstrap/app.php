@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\HealthController;
+use App\Http\Controllers\MetricsController;
 use App\Http\Middleware\HandleInertiaRequests;
+use App\Http\Middleware\RecordHttpMetrics;
 use App\Support\LogContext;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
@@ -20,9 +22,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
         then: function () {
             Route::get('/health', HealthController::class)->name('health');
+            Route::get('/metrics', MetricsController::class)->name('metrics');
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->append(RecordHttpMetrics::class);
+
         $middleware->web(append: [
             HandleInertiaRequests::class,
             AddLinkHeadersForPreloadedAssets::class,
